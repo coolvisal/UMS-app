@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthorService } from './author.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ums-app';
+  authorList:string[]
+  title = 'Angular ';
+  count:number
+  constructor(private autherservice:AuthorService){
+
+  }
+  ngOnInit(){
+    this.authorList=this.autherservice.getAuthors();
+    this.count=this.authorList.length;
+  }
+
 }
